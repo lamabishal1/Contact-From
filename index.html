@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Contact form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @font-face{
+      font-family: 'MyFont';
+      src: url('./assets/fonts/static/Karla-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+        body{
+          font-family: 'MyFont', sans-serif;
+          background-color: rgb(193, 228, 208);
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          padding-top: 40px;
+          cursor: pointer;
+        }
+        .success{
+          position: absolute;
+          top: 20px;
+          background-color: #1e3c32;
+          color:white;
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          max-width: 300px;
+          text-align: left;
+          font-size: 0.9rem;
+          z-index: 100;
+          display: none;
+        }
+        .success.show {
+          display: block;
+        }
+        .container-outside{
+          background-color: white;
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          width: 100%;
+          max-width: 600px;
+        }
+        h1{
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: #1a1a1a;
+        }
+        .form-row{
+          display: flex;
+          gap: 2rem;
+        }
+        .form-group{
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 1rem;
+          flex: 1;
+        }
+        #first-name,
+        #last-name,
+        #email{
+          margin-top: 0.5rem;
+        }
+        input[type="text"],
+        input[type='email']{
+          padding: 0.5rem;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 1rem;
+          width: 100%;
+        }
+        textarea{
+          padding: 0.5rem;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 1rem;
+          width: 100%;
+          resize: vertical;
+          margin-top: 0.5rem;
+        }
+        .radio{
+          display: flex;
+          gap: 1rem;
+          margin-top: 0.5rem;
+          
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            accent-color: #005f48; 
+          }
+        .radio-box{
+          border: 1px solid #ccc;
+          display:flex;
+          align-items: center;
+          flex: 1;
+          padding: 1rem;
+          gap: 0.5;
+          cursor: pointer;
+          border-radius: 6px;
+           gap: 1rem;
+        }
+        .radio-box input[type="radio"]{
+          margin: 0;
+          display: flex;
+        }
+        .checkbox-group label{
+          display: flex;
+          align-items: left;
+          gap: 0.5rem;
+          
+        }
+        button{
+          background-color: #00785c;
+          color: white;
+          padding: 0.5rem 1rem;
+          width: 100%;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 1rem;
+        }
+        button:hover{
+          background-color: #005f48;
+        }
+        label span.required {
+        color: #005f48; 
+        font-weight: bold;
+        }
+        @media (max-width: 600px){
+          .form-row{
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+        .radio{
+          flex-direction: column;
+        }
+        .radio-box{
+          padding:0.75rem;
+        }
+        .radio-box{
+          padding:0.75rem;
+        }
+        body{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          padding: 20px 0;
+          margin: 0;
+        }
+        .container-outside{
+          width: 75%;
+          height: auto;
+          margin: auto;
+        }
+        input.error,
+        textarea.error {
+          border-color: #e74c3c;
+        }
+
+        label.error-label {
+          color: #e74c3c;
+        }
+
+        .error-message {
+          color: #e74c3c;
+          font-size: 0.85rem;
+          margin-top: 0.25rem;
+        }
+
+    .attribution { font-size: 11px; text-align: center; margin-top: 1rem;}
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div id="success" class="success">
+    <img src="./assets/images/icon-success-check.svg" alt="Success icon" width="24" height="24" />
+    <div class="flex" align-items="flex-start">
+    <strong> Message Sent!</strong><br />
+    Thanks for completing the form. We'll be in touch soon!
+  </div>
+  </div>
+
+  <div class="container-outside">
+    <form id="contact-form">
+  <h1>Contact Us</h1>
+
+   <div class="form-row">
+      <div class="form-group">
+  <label for="first-name">First Name <span class="required">*</span> </label>
+  <input type="text" id="first-name" required>
+</div>
+  <div class="form-group">
+  <label for="last-name">Last Name <span class="required">*</span></label>
+  <input type="text" id="last-name" required>
+</div>
+   </div>
+   <div class="form-group">
+  <label for ="email">Email Address <span class="required">*</span></label>
+  <input type="email" id="email" required>
+</div>
+
+  <div class="form-group">
+  <label>Query Type <span class="required">*</span></label>
+  <div class="radio">
+    <label class="radio-box">
+  <input type="radio" name="query" required>
+  General Enquiry
+    </label>
+    <label class="radio-box">
+    <input type="radio" name="query"> 
+    Support Request
+    </label>
+    </div>
+    </div> 
+
+  <div class="form-group">
+  <label for="message">Message <span class="required">*</span></label>
+  <textarea id="message" required></textarea>
+  </div>
+
+  <div class="form-group checkbox-group">
+  <label ><input type="checkbox" id="consent" required> I consent to being contacted by the team <span class="required">*</span></label>
+  </div>
+
+  <button type="submit" id ="submit"> Submit </button>
+  </form>
+ 
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">LAMA BISHAL</a>.
+  </div>
+   </div>
+
+  <script>
+     const form = document.getElementById("contact-form");
+    const success = document.getElementById("success");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const errorMessages = form.querySelectorAll(".error-message");
+      errorMessages.forEach(msg => msg.remove());
+
+      const inputs = form.querySelectorAll("input[required], textarea[required]");
+      let isValid = true;
+
+       inputs.forEach(input => {
+    input.classList.remove("error");
+    const label = form.querySelector(`label[for="${input.id}"]`);
+    if (label) label.classList.remove("error-label");
+
+    if (!input.value.trim()) {
+      isValid = false;
+      input.classList.add("error");
+      if (label) label.classList.add("error-label");
+
+       const errorMsg = document.createElement("div");
+      errorMsg.className = "error-message";
+      errorMsg.innerText = "This field is required.";
+      input.parentNode.insertBefore(errorMsg, input.nextSibling);
+    }
+  });
+  const radios = form.querySelectorAll('input[name="query"]');
+  const radioSelected = Array.from(radios).some(radio => radio.checked);
+  const radioLabel = form.querySelector('label[for="query"]') || radios[0].closest('.form-group').querySelector('label');
+
+  if (!radioSelected) {
+    isValid = false;
+    radios.forEach(radio => radio.classList.add("error"));
+    if (radioLabel) radioLabel.classList.add("error-label");
+
+    if (!form.querySelector(".radio-error-message")) {
+      const radioErrorMsg = document.createElement("div");
+      radioErrorMsg.className = "error-message radio-error-message";
+      radioErrorMsg.innerText = "Please select an option.";
+      radios[radios.length - 1].parentNode.parentNode.appendChild(radioErrorMsg);
+    }
+  } else {
+    radios.forEach(radio => radio.classList.remove("error"));
+    if (radioLabel) radioLabel.classList.remove("error-label");
+    const existingRadioError = form.querySelector(".radio-error-message");
+    if (existingRadioError) existingRadioError.remove();
+  }
+
+   const consentCheckbox = document.getElementById("consent");
+  const consentLabel = consentCheckbox.closest("label");
+  if (!consentCheckbox.checked) {
+    isValid = false;
+    consentCheckbox.classList.add("error");
+    consentLabel.classList.add("error-label");
+
+    if (!form.querySelector(".consent-error-message")) {
+      const consentErrorMsg = document.createElement("div");
+      consentErrorMsg.className = "error-message consent-error-message";
+      consentErrorMsg.innerText = "You must consent to proceed.";
+      consentCheckbox.parentNode.appendChild(consentErrorMsg);
+    }
+  } else {
+    consentCheckbox.classList.remove("error");
+    consentLabel.classList.remove("error-label");
+    const existingConsentError = form.querySelector(".consent-error-message");
+    if (existingConsentError) existingConsentError.remove();
+  }
+
+      if (isValid) {
+    success.classList.add("show");
+
+    setTimeout(() => {
+      success.classList.remove("show");
+      form.reset();
+    }, 5000);
+  }
+});
+
+  </script>
+</body>
+</html>
